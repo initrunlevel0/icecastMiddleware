@@ -12,12 +12,14 @@ mongoose.connect('mongodb://localhost/mbahmu');
 var connectIcecast = function(mountPoint, method, headers, callback) {
     var clients = [];
     peerModel.Peer.find({}, function(err, peers) {
-        async.each(peers, function(peer, callback) {
+        async.eachSeries(peers, function(peer, callback) {
             if(peer.online == true) {
-                var client = net.connect({ip: peer.ip, port: 8000}, function() {
+                console.log("Connecting to: " + peer.ip)
+                var client = net.connect({host: peer.ip, port: 8000}, function() {
                     var stdout = "";
                     // Connect, give me some header
                     client.write(method + " " + mountPoint + " HTTP/1.0\r\n");
+                    console.log(method, mountPoint)
                     for(idx in headers) {
                         if(idx == "Authorization") {
                             client.write('Authorization: Basic c291cmNlOmhhY2ttZQ==\r\n')
@@ -27,8 +29,8 @@ var connectIcecast = function(mountPoint, method, headers, callback) {
                     }
 
                     client.write('\r\n');
-
                     client.on('data', function(data) {
+                        console.log(data.toString())
                         stdout += data.toString();
                         if(stdout.indexOf("HTTP/1.0 200 OK\r\n") >= 0) {
                             console.log('Connected to: ' + peer.ip);
@@ -36,6 +38,7 @@ var connectIcecast = function(mountPoint, method, headers, callback) {
                             callback();
                         }
                     });
+
                 });
 
 
