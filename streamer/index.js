@@ -9,7 +9,7 @@ var streamModel = require('../models/streamModel');
 mongoose.connect('mongodb://localhost/mbahmu');
 
 
-var connectIcecast = function(mountPoint, headers, callback) {
+var connectIcecast = function(mountPoint, method, headers, callback) {
     var clients = [];
     peerModel.Peer.find({}, function(err, peers) {
         async.each(peers, function(peer, callback) {
@@ -17,7 +17,7 @@ var connectIcecast = function(mountPoint, headers, callback) {
                 var client = net.connect({ip: peer.ip, port: 8000}, function() {
                     var stdout = "";
                     // Connect, give me some header
-                    client.write("SOURCE " + mountPoint + " HTTP/1.0\r\n");
+                    client.write(method + " " + mountPoint + " HTTP/1.0\r\n");
                     for(idx in headers) {
                         if(idx == "Authorization") {
                             client.write('Authorization: Basic c291cmNlOmhhY2ttZQ==\r\n')
@@ -69,9 +69,10 @@ net.createServer(function(stream) {
                     // Separate first line and the rest
                     var headerSplit = headerRaw.split("\r\n");
                     var mountPoint = headerSplit[0].split(" ")[1];
+                    var method = headerSplit[0].split(" ")[0];
                     var headers = {};
 
-                    console.log(mountPoint);
+                    console.log(method, mountPoint);
                     for(var i=1; i<headerSplit.length; i++) {
                         var name = headerSplit[i].split(": ")[0];
                         var value = headerSplit[i].split(": ")[1];
@@ -79,6 +80,8 @@ net.createServer(function(stream) {
                             headers[name] = value;
                         }
                     }
+
+                    console.log(headers);
 
 
                     // Check authentication part
@@ -89,28 +92,35 @@ net.createServer(function(stream) {
 
 
 
+
                     // Authenticate with Model
                     userModel.authenticateUser(userName, password, function(err, result, userId) {
                         if(result == true) {
                             // Check if this user is appropriate for this moutnPoint
-                            streamModel.streamMountUser(mountPoint, userId, function(err, result) {
-                                if(result == true) {
-                                    // Roger that
-                                    headerMode = false;
+                            // Stream Mode
+                            if(mountPoint.indexOf("/admin/") < 0) {
+                                streamModel.streamMountUser(mountPoint, userId, function(err, result) {
+                                    if(result == true) {
+                                        // Roger that
+                                        headerMode = false;
 
-                                    // But first, connect to the real stream server
-                                    connectIcecast(mountPoint, headers, function(result) {
-                                        console.log('Connected to all, ready to serve...')
-                                        peerStreams = result;
+                                        // But first, connect to the real stream server
+                                        connectIcecast(mountPoint, method, headers, function(result) {
+                                            console.log('Connected to all, ready to serve...')
+                                            peerStreams = result;
 
-                                        // Ready to serve a media
-                                        stream.write('HTTP/1.0 200 OK\r\n\r\n')
-                                    });
+                                            // Ready to serve a media
+                                            stream.write('HTTP/1.0 200 OK\r\n\r\n')
+                                        });
 
-                                } else {
-                                    stream.end('HTTP/1.0 500 ERROR\r\n\r\n')
-                                }
-                            });
+                                    } else {
+                                        stream.end('HTTP/1.0 500 ERROR\r\n\r\n')
+                                    }
+                                });
+
+                            // Admin mode
+                            } else {
+                            }
                         } else {
                             stream.end('HTTP/1.0 500 ERROR\r\n\r\n')
                         }

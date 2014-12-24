@@ -1,0 +1,21 @@
+<div ng-controller="userController">
+<table border="1">
+    <tr>
+        <td><b>UserName</b></td>
+        <td><b>Option</b></td>
+    </tr>
+    <tr ng-repeat="user in users">
+        <td>{{user.userName}}</td>
+        <td><a href="#/{{user._id}}">Edit</a></td>
+    </tr>
+</table>
+<br/>
+<strong>Add New Uyung, eh User</strong>
+<form>
+    <label>UserName</label>
+    <input ng-model="newUser.userName" /> <br/>
+    <label>Password</label>
+    <input ng-model="newUser.password" /> <br/>
+    <button ng-click="createUser()">Kriyet</button>
+</form>
+</div>

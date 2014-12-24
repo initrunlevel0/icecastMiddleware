@@ -1,0 +1,21 @@
+<div ng-controller="streamController">
+<table border="1">
+    <tr>
+        <td><b>Stream</b></td>
+        <td><b>Option</b></td>
+    </tr>
+    <tr ng-repeat="stream in streams">
+        <td>{{stream.mountPoint}}</td>
+        <td>Nope</td>
+    </tr>
+</table>
+<br/>
+<strong>Add New /stream</strong>
+<form>
+    <label>Stream</label>
+    <input ng-model="newStream.mountPoint" /> <br/>
+    <button ng-click="createStream()">Kriyet</button>
+</form>
+<p>Ingat, nama stream harus diawali / (slash), not these one :</p>
+<img src="http://static.fjcdn.com/pictures/The_1ba7ec_480548.png"/>
+</div>
