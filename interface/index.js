@@ -17,6 +17,13 @@ app.listen(9500);
 
 app.get('/', function(req, res) {
     // Server app.html
+    fs.readFile('./welcome.html', function(err, data) {
+        res.end(data);
+    });
+});
+
+app.get('/app', function(req, res) {
+    // Server app.html
     fs.readFile('./app.html', function(err, data) {
         res.end(data);
     });
