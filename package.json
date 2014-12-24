@@ -1,0 +1,26 @@
+{
+  "name": "icecastMiddleware",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/initrunlevel0/icecastMiddleware"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/initrunlevel0/icecastMiddleware/issues"
+  },
+  "homepage": "https://github.com/initrunlevel0/icecastMiddleware",
+  "dependencies": {
+    "async": "^0.9.0",
+    "bcrypt": "^0.8.0",
+    "http-string-parser": "0.0.4",
+    "mongoose": "^3.8.21",
+    "parsley": "^0.1.0"
+  }
+}
