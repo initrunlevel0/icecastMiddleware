@@ -3,11 +3,11 @@
 \begin{enumerate}
     \item HAProxy
     
-    HAProxy ( High Availability Proxy ) merupakan salah satu sistem penyeimbang muat handal pada protokol TCP/HTTP. Sistem yang digunakannya akan membagi beban kerja ke sekumpulan server untuk memaksimalkan kerjanya.
+    HAProxy ( High Availability Proxy ) merupakan salah satu sistem penyeimbang muat handal pada protokol TCP/HTTP. Sistem yang digunakannya akan membagi beban kerja ke sekumpulan server untuk memaksimalkan kerjanya \cite{haproxy}.
     
-    Beberapa alasan mengapa HAProxy ini banyak digunakan adalah :
+    Beberapa alasan mengapa HAProxy ini banyak digunakan adalah : \cite{halebih}
     \begin{enumerate}
-        \item Sangat cepat.
+        \item Sangat cepat. 
         \item Efisien, dengan 700 permintaan dalam satu detik CPU yang digunakan kurang dari 5\% dan 40MB RAM.
         \item Memungkinkan untuk dilakukan perubahan konfigurasi selama koneksi masih terjadi dan tidak akan mengganggu koneksi tersebut.
         \item Memungkinkan adanya \textit{queue} dalam pengaplikasiannya jika memang koneksi yang masuk terlalu banyak.
@@ -16,7 +16,7 @@
     
     \item Icecast
     
-    Merupakan kumpulan dari program dan pustaka yang digunakan untuk melakukan \textit{audio streaming} melalui internet. Ada tiga komponen utama di dalamnya yaitu :
+    Merupakan kumpulan dari program dan pustaka yang digunakan untuk melakukan \textit{audio streaming} melalui internet. Ada tiga komponen utama di dalamnya yaitu \cite{ice}:
     
     \begin{enumerate}
         \item Icecast
@@ -34,7 +34,7 @@
     
     \item NodeJS
     
-    Merupakan sebuah platform yang dibangun di atas Chrome's JavaScript runtime dengan teknologi V8 yang mendukung proses server yang bersifat \textit{long-running}. Tidak seperti platform modern yang mengandalkan multithreading, NodeJS memilih menggunakan asynchronous I/O eventing. Karena inilah NodeJS mampu bekerja dengan konsumsi memori rendah.
+    Merupakan sebuah platform yang dibangun di atas Chrome's JavaScript runtime dengan teknologi V8 yang mendukung proses server yang bersifat \textit{long-running}. Tidak seperti platform modern yang mengandalkan multithreading, NodeJS memilih menggunakan asynchronous I/O eventing \cite{nodejsieee}. Karena inilah NodeJS mampu bekerja dengan konsumsi memori rendah.
     
     
     
@@ -47,9 +47,9 @@ Beberapa pengembangan terhadap terknologi di atas antara lain:
 \begin{enumerate}
     \item GitHub
     
-    Sebagai media untuk melakukan \textit{versioning} dalam pengembangan perangkat lunak, pengguna mengharapkan kecepatan akses terhadap halaman pribadinya. Oleh karena itu pengembang Github memanfaatkan fitur \textit{proxy} pada HAProxy untuk membagi kinerja server di dalamnya sehingga pengguna dapat dengan cepat mengakses halaman pribadinya. (mojombo, 2009)
+    Sebagai media untuk melakukan \textit{versioning} dalam pengembangan perangkat lunak, pengguna mengharapkan kecepatan akses terhadap halaman pribadinya. Oleh karena itu pengembang Github memanfaatkan fitur \textit{proxy} pada HAProxy untuk membagi kinerja server di dalamnya sehingga pengguna dapat dengan cepat mengakses halaman pribadinya. \cite{hause}
     
     \item Stack Overflow / Server Fault
     
-    Pengembangnya jelas menyebutkan bahwa mereka adalah penggemar HAProxy yang telah berhasil me-\textit{load balancing}-kan 2 hingga 3 komputer server yang dimilikinya.
+    Pengembangnya jelas menyebutkan bahwa mereka adalah penggemar HAProxy yang telah berhasil me-\textit{load balancing}-kan 2 hingga 3 komputer server yang dimilikinya. \cite{hause}
 \end{enumerate}

@@ -5,9 +5,9 @@
 Pada implementasi fitur penyeimbang muat dari sisi pendengar, HAPHAProxy menyediakan satu alamat server yang bisa diakses oleh pendengar dan meneruskannya ke tiga node akhir. Untuk menyokong sistem penyeimbang muat, disediakan tiga Node akhir pada alamat masing-masing \texttt{10.151.36.201}, \texttt{10.151.36.202}, dan \texttt{10.151.36.203}. Ketiga Node akhir ini sudah terpasang server Icecast dengan konfigurasi bawaan. Konfigurasi \texttt{haproxy.cfg} dapat dilihat pada Listing \ref{lst:haproxycfg} berikut.
 
 
-\begin{listing}
-\label{lst:haproxycfg}
-\caption{Konfigurasi HAProxy pada penyeimbang muat}
+
+%\label{lst:haproxycfg}
+%\caption{Konfigurasi HAProxy pada penyeimbang muat}
 \begin{lstlisting}[breaklines,frame=single]
 frontend localnodes
 bind *:8000
@@ -24,7 +24,6 @@ server ice2 10.151.36.202:8000 check maxconn 100000
 server ice3 10.151.36.203:8000 check maxconn 100000
 
 \end{lstlisting}
-\end{listing}
 
 Konfigurasi HAProxy di atas berjalan di server dengan alamat 10.151.36.205. Fitur penyeimbang muat ini bekerja pada port 8000 dan akan meneruskan permintaan yang masuk ke tiga node akhir yang sudah dituliskan di dalam konfigurasi. 
 \section{Sisi Penyiar/Pengirim}
@@ -43,13 +42,13 @@ Dalam penelitian ini digunakan basis data berbasis dokumen MongoDB (\url{http://
     \end{itemize}
     
     \item \textbf{Users}
-    Koleksi ini digunakan untuk menyimpan daftar pengguna yang berhak untuk melakukan pengiriman data siar pada sistem yang dibangun. Terdapat dua kolom yaitu kolom \textttt{userName} dan kolom \texttt{password}. Untuk penyimpanan di kolom \texttt{password} digunakan mekanisme \emph{hashing} berbasis \textbf{bcrypt} untuk menjaga keamanan autentikasi pengirim.
+    Koleksi ini digunakan untuk menyimpan daftar pengguna yang berhak untuk melakukan pengiriman data siar pada sistem yang dibangun. Terdapat dua kolom yaitu kolom \texttt{userName} dan kolom \texttt{password}. Untuk penyimpanan di kolom \texttt{password} digunakan mekanisme \emph{hashing} berbasis \textbf{bcrypt} untuk menjaga keamanan autentikasi pengirim.
     
     \item \textbf{Streams}
     
     Setiap pengirim yang memiliki akses penyiaran ke server harus menentukan sendiri \textit{mount point} yang akan digunakan di dalam server. Koleksi ini akan mendaftar semua \textit{mount point} pilihan pengirim yang nantinya akan diinfokan ke pendengar \textit{mount point} mana yang sedang aktif. 
     
-    Yang disimpan di dalam koleksi ini adalah nama \textttt{mountPoint} untuk alamat \textit{stream} dan pengirim yang bisa menggunakan \textit{stream} tersebut.
+    Yang disimpan di dalam koleksi ini adalah nama \texttt{mountPoint} untuk alamat \textit{stream} dan pengirim yang bisa menggunakan \textit{stream} tersebut.
 \end{enumerate}
 
 \subsection{Penyebar data audio}
