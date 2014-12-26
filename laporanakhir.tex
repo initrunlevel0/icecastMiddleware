@@ -1,0 +1,544 @@
+\documentclass[oneside]{book}
+\usepackage[bahasa]{babel}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{tabto}
+
+\begin{document}
+\frontmatter
+	\title{Halo ini title}
+	\maketitle
+	
+
+	\chapter{Halaman Pengesahan}
+	Judul \tabto{4cm} : Metode Pengaliran Data Audio melalui Sistem Penyeimbang Muat berbasis HAProxy 
+	\\
+	\textbf{Pelaksana} \\
+	\textbf{Anggota (1)} \\
+	a. Nama Lengkap \tabto*{4cm} : Putu Wiramaswara Widya\\
+	b. NRP \tabto*{4cm} : 5111100012\\
+	c. Nomor HP \tabto*{4cm} : \\
+	d. Alamat surel (e-mail) \tabto*{4cm} : wiramaswara11@mhs.if.its.ac.id\\
+	\textbf{Anggota (2)} \\
+	a. Nama Lengkap \tabto*{4cm} : Bahrul Halimi\\
+	b. NRP \tabto*{4cm} : 5111100014\\
+	c. Nomor HP \tabto*{4cm} : 085641511915\\
+	d. Alamat surel (e-mail) \tabto*{4cm} : bahrul.halimi11@mhs.if.its.ac.id\\
+	\textbf{Anggota (3)} \\
+	a. Nama Lengkap \tabto*{4cm} : \\
+	b. NRP \tabto*{4cm} : \\
+	c. Nomor HP \tabto*{4cm} : \\
+	d. Alamat surel (e-mail) \tabto*{4cm} : \\
+	
+	\begin{center}
+		Surabaya, 23 Desember 2014 \\
+		Mengetahui,	\\
+		\ \\
+		\ \\
+		\ \\
+		\ \\
+		\ \\
+		\underline{Henning Titi Ciptaningtyas, S.Kom, M.Kom} \\
+		NIP. 198407082010122004
+	\end{center}
+	
+	
+	
+
+	\chapter{ABSTRAK}
+	
+
+	\chapter{DAFTAR TABEL}
+	
+
+	\chapter{DAFTAR GAMBAR}
+	
+
+	\chapter{DAFTAR LAMPIRAN}
+	
+	\mainmatter
+
+	\chapter{Pendahuluan}
+	
+	\section{Latar Belakang}
+	
+	Informasi menyebar dari lokasi ke lokasi lain dengan media yang beragam. Mulai dari media udara (percakapan) hingga media internet. Media internet inilah yang semakin meningkat tajam penggunaannya setiap tahun.
+	
+	Salah satu media penyebaran informasi melalui internet adalah dengan \textit{streaming}. \textit{Streaming} sendiri sudah dikenal masyarakat Indonesia sejak lama, pada dasarnya \textit{streaming} diartikan dengan melihat video langsung dari internet tanpa harus mengunduhnya dari internet. Padahal \textit{streaming} tidak hanya menonton video saja, tapi dengan mendengarkan suara saja yang berada tidak pada lokal komputer (dari internet) bisa diartikan sebagai \textit{streaming}.
+	
+	Murahnya penggunaan internet memunculkan banyaknya pelaku \textit{streaming}, baik pengguna maupun penyedia informasi. Tapi banyaknya pelaku \textit{streaming} ini tidak dibarengi dengan adanya satu gerbang yang bisa menampung beberapa penyedia \textit{streaming} dengan layanan yang cepat jika diakses oleh penggunanya.
+	
+	Diluar konteks \textit{streaming} persebaran informasi dalam bentuk tulisan terkadang membuat pengguna menjadi malas membukanya. Alternatif menggunakan video mulai dilirik namun kelamahannya ada pada besarnya data yang diterima pendengar sehingga terkadang dengan koneksi yang lambat juga akan memperlambat tersampainya informasi.
+	
+	\textit{Audio streaming} menjadi pilihan terakhir penyampaian informasi ke pengguna. Internet radio salah satu bentuk dari audio \textit{streaming} ini. Namun, pemilik audio \textit{streaming} harus mengembangkan teknologinya sendiri untuk bisa melakukan siaran terhadap \textit{audio streaming}-nya. Walaupun aplikasi untuk melakukan \textit{streaming} ini bebas digunakan, namun dengan banyak pertimbangan (perangkat keras) akhirnya banyak yang menolak mengembangkan teknologi ini. Ujung-ujungnya pengguna (dalam hal ini pendengar dan selanjutnya disebut pendengar) tidak dapat menerima siaran audio dari pengirim \textit{streaming} (selanjutnya disebut pengirim)
+	
+	\section{Permasalahan}
+	Berikut beberapa hal yang menjadi rumusan masalah dalam pengerjaan penelitian ini :
+	\begin{enumerate}
+		\item Bagaimana menerima data audio dari pengirim?
+		\item Bagaimana menyeimbangkan muatan kerja server yang menyiarkan audio ke pendengar ketika ada banyak permintaan secara bersamaan?
+		\item Bagaimana menyediakan banyak server untuk melayani permintaan pendengar dengan satu sumber stream dari pengirim?
+	\end{enumerate}
+	
+	\section{Batasan Masalah}
+	Dari permasalahan yang diuraikan di atas, terdapat beberapa batasan masalah pada penelitian ini, yaitu :
+	\begin{enumerate}
+		\item Streaming multimedia yang didukung hanya audio.
+		\item Dapat menerima data audio berupa berkas (MP3, dll) atau suara yang ditangkap oleh sound card pengirim.
+	\end{enumerate}
+	
+	\section{Tujuan dan Manfaat}
+	Penelitian ini dibuat dengan beberapa tujuan. Berikut tujuan dari penelitian:
+	\begin{enumerate}
+		\item Mampu menerima siaran audio dari pengirim.
+		\item Mampu menyampaikan siaran audio dari 1 pengirim ke beberapa server streaming yang ada.
+		\item Mampu menyebarkan siaran audio ke pendengar.
+		\item Mampu menyeimbangkan muatan kerja server yang tersedia ketika ada permintaan pendengar dalam jumlah yang besar.
+	\end{enumerate}
+
+	\section{Luaran}
+	Luaran dari penilitian ini adalah :
+	\begin{enumerate}
+		\item asdas
+	\end{enumerate}
+	
+
+	\chapter{Tinjauan Pustaka}
+	\section{Teori Penunjang}
+	\begin{enumerate}
+		\item HAProxy
+		
+		HAProxy ( High Availability Proxy ) merupakan salah satu load balancer handal pada protokol TCP/HTTP. Sistem yang digunakannya akan membagi beban kerja ke sekumpulan server untuk memaksimalkan kerjanya.
+		
+		Beberapa alasan mengapa HAProxy ini banyak digunakan adalah :
+		\begin{enumerate}
+			\item Sangat cepat.
+			\item Efisien, dengan 700 permintaan dalam satu detik CPU yang digunakan kurang dari 5\% dan 40MB RAM.
+			\item Memungkinkan untuk dilakukan perubahan konfigurasi selama koneksi masih terjadi dan tidak akan mengganggu koneksi tersebut.
+			\item Memungkinkan adanya \textit{queue} dalam pengaplikasiannya jika memang koneksi yang masuk terlalu banyak.
+		\end{enumerate}
+		
+		
+		\item Icecast
+		
+		Merupakan kumpulan dari program dan pustaka yang digunakan untuk melakukan \textit{audio streaming} melalui internet. Ada tiga komponen utama di dalamnya yaitu :
+		
+		\begin{enumerate}
+			\item Icecast
+			
+			Program ini akan menyampaikan data stream audio ke pendengar.
+			
+			\item Libshout
+			
+			Adalah sebuah pustaka yang digunakan untuk mengirimkan data ke server. Data ini berasal dari orang yang ingin menyebarkan audionya sehingga bisa didengarkan orang lain.
+			
+			\item IceS
+			
+			Program yang akan mengirimkan data audio dari ke server dan disebarkan secara broadcast ke pendengar. Program ini dapat mengirim data audio di dalam media penyimpanan seperti berkas Ogg Vorbis atau suara langsung yang ditangkap sound card.
+		\end{enumerate}
+		
+		\item NodeJS
+		
+		Merupakan sebuah platform yang dibangun di atas Chrome's JavaScript runtime dengan teknologi V8 yang mendukung proses server yang bersifat \textit{long-running}. Tidak seperti platform modern yang mengandalkan multithreading, NodeJS memilih menggunakan asynchronous I/O eventing. Karena inilah NodeJS mampu bekerja dengan konsumsi memori rendah.
+		
+		
+		
+	\end{enumerate}
+	
+	\section{Solusi Sebelumnya}
+	
+	Beberapa pengembangan terhadap terknologi di atas antara lain:
+	
+	\begin{enumerate}
+		\item GitHub
+		
+		Sebagai media untuk melakukan \textit{versioning} dalam pengembangan perangkat lunak, pengguna mengharapkan kecepatan akses terhadap halaman pribadinya. Oleh karena itu pengembang Github memanfaatkan fitur \textit{proxy} pada HAProxy untuk membagi kinerja server di dalamnya sehingga pengguna dapat dengan cepat mengakses halaman pribadinya. (mojombo, 2009)
+		
+		\item Stack Overflow / Server Fault
+		
+		Pengembangnya jelas menyebutkan bahwa mereka adalah penggemar HAProxy yang telah berhasil me-\textit{load balancing}-kan 2 hingga 3 komputer server yang dimilikinya.
+	\end{enumerate}
+
+	\chapter{Metode Penelitian}
+	
+	\section{Arsitektur Aplikasi}
+	
+	Aplikasi akan dibagi menjadi dua bagian yaitu Frontend (yang berurusan dengan pendengar) dan Backend (yang berurusan dengan pengirim). Di bagian frontend, pendengar akan berhadapan dengan server load balancing yang akan mengarahkan permintaan pendengar ke server yang tersedia untuk melayani. Pada bagian backend, pengirim akan berhadapan dengan server penerima streaming dan nantinya data streaming akan berada pada setiap node akhir load balancer. 
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\linewidth]{arsitektur}
+		\caption{Arsitektur Jaringan}
+		\label{fig:arsitektur}
+	\end{figure}
+	
+	Gambar \ref{fig:arsitektur} sudah menjelaskan bagaimana interaksi antara server (frontend dan backend), pendengar, dan pengirim. Dengan pembagian kerja ini nantinya pendengar hanya akan mengetahui aliran data audio mana saja yang aktif dan pengirim hanya akan mengirim aliran data audio.
+
+	\section{Fitur Aplikasi}
+	\subsection{Pengaliran Data Audio}
+	
+	Icecast hanya mendukung pengaliran data audio ke satu server saja untuk satu kali proses pengaliran. Seorang pengirim hanya dapat mengakses satu alamat saja dengan kemampuan icecast yang ada. Fitur ini akan membuat pengaliran data audio tidak hanya tertuju ke satu alamat saja. Memang benar jika pengirim hanya akan mengakses satu alamat saja, namun data audio dari pengirim akan diteruskan ke 3 node akhir yang sudah disediakan.
+	
+	Pada Gambar \ref{fig:kirim-server} diagram alur menjelaskan bagaimana pengirim mengirimkan paket audionya ke satu server saja. Pada saat data audio masuk ke server, server akan meneruskan data audio ke node akhir sehingga node akhir memiliki data audio yang sama dengan yang diterima server.
+	
+	Gambar \ref{fig:kirim-server} menjelaskan apa yang terjadi di bagian backend aplikasi.
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{kirim-server}
+		\caption{Alur Kerja Pengirim dan Server}
+		\label{fig:kirim-server}
+	\end{figure}
+
+	
+	\subsection{Penyeimbang Muat}
+	Penyeimbang muat di sini berlaku hanya ketika ada pendengar menggunakan server yang disediakan. Pada kenyataannya pendengar hanya akan mengakses satu alamat server yang akan memintakan layanan ke node akhir. Server yang diakses oleh pendengar tidak memiliki layanan yang diminta oleh pendengar, server hanya bertindak sebagai penerus dan penyeimbang muat bagi permintaan yang banyak.
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{dengar-server}
+		\caption{Alur Kerja Pendengar dan Server}
+		\label{fig:dengar-server}
+	\end{figure}
+	
+	Sesuai dengan Gambar \ref{fig:dengar-server}, server yang diakses pengguna adalah server penyeimbang muat yang hanya sebagai jembatan dalam layanan aliran data audio. 
+
+	\section{Sarana Yang Digunakan}
+	
+	Dalam penilitian ini, digunakan beberapa teknologi untuk mengaplikasikan rancangan yang sudah ada, diantaranya:
+	
+	\begin{enumerate}
+		\item Bahasa Pemrograman
+		
+		Menggunakan nodejs untuk konfigurasi antara pengirim dan server.
+		
+		\item IDE
+		
+		Penilitian ini menggunakan VIM sebagai IDE
+		
+		\item Perangkat Keras
+		
+		Untuk menunjang fitur penyeimbang muat, digunakan beberapa virtualisasi di dalam Proxmox. Proxmox menyediakan banyak virtualisasi di dalam satu komputer fisik. Lokasi server Proxmox ada di Laboratorium Arsitektur dan Jaringan Komputer Teknik Informatika ITS.
+		
+		\item Audio Streamer
+		
+		Aplikasi \textit{audio streaming} yang mendukung penggunaan server salah satunya adalah Mixxx yang didukung di beberapa platform seperti Linux dan Windows. Mixxx ini memiliki autentikasi untuk menggunakan server sesuai dengan konfigurasi yang ada sebelumnya.
+	\end{enumerate}
+	
+	
+	\chapter{IMPLEMENTASI}
+	
+	\section{Implementasi Penyimpanan Data}
+	Dalam penilitian ini digunakan basis data berbasis dokumen yaitu MongoDB. Secara umum struktur dari basis data dalam penilitian ini terdiri dari tiga koleksi yaitu :
+	
+	\begin{enumerate}
+		\item \textbf{Peers} 
+		
+		Koleksi ini berisi daftar node akhir yang bisa digunakan untuk melayani pendengar. Kolom yang digunakan untuk menyimpan informasi node akhir adalah kolom ip dan kolom online. Kolom ip merupakan alamat dari node akhir yang tersedia sedangkan kolom online untuk menginformasikan apakah node dengan alamat yang dimaksud dapat digunakan atau tidak.
+		
+		\item \textbf{Users}
+		
+		Akan ada banyak pengirim yang menggunakan fitur stream ini. Padahal untuk menambahkan daftar autentikasi pengguna, sistem harus dimulai kembali untuk menerima konfigurasi baru. Untuk itu dibuatlah koleksi ini yang berisi daftar pengguna sah yang dapat menggunakan fitur stream untuk menyebarkan siaran audionya.
+		
+		Terdapat dua kolom yaitu kolom userName dan kolom password. Untuk penyimpanan di kolom password digunakan mekanisme hashing untuk menjaga keamanan autentikasi pengirim.
+		
+		\item \textbf{Streams}
+		
+		Setiap pengirim sah yang memiliki akses stream ke server harus menentukan sendiri \textit{mount point} yang akan digunakan di dalam server. Koleksi ini akan mendaftar semua \textit{mount point} pilihan pengirim yang nantinya akan diinfokan ke pendengar \textit{mount point} mana yang sedang aktif. 
+		
+		Yang disimpan di dalam koleksi ini adalah nama \textit{mount point} untuk alamat \textit{stream} dan pengirim yang bisa menggunakan \textit{stream} tersebut.
+	\end{enumerate}
+	
+	\section{Implementasi Pengaliran Data Audio}
+	Di sisi pengirim, aplikasi yang dapat digunakan salah satunya adalah Mixxx. Gambar \ref{fig:mixxx} adalah tampilan muka dari Mixxx untuk platform Windows. Untuk konfigurasi server mana yang akan digunakan, pilih menu \textbf{Options} $\rightarrow$ \textbf{Preferences} $\rightarrow$ \textbf{Live Broadcasting}.
+	
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{mixxx}
+		\caption{Tampilan Muka Mixxx}
+		\label{fig:mixxx}
+	\end{figure}
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{konfigMixxx}
+		\caption{Konfigurasi Mixxx}
+		\label{fig:konfigMixxx}
+	\end{figure}
+	
+	Gambar \ref{fig:konfigMixxx} menunjukkan konfigurasi yang digunakan untuk implementasi sesuai dengan data yang ada di dalam basis data. Server utama untuk backend ada di 10.151.36.205 dengan port 9000. Di dalam basis data terdapat data pengirim dengan username wira.
+	
+	Seperti yang sudah dijelaskan sebelumnya, server utama di backend ini akan meneruskan setiap data audio yang masuk ke dirinya ke tiga node akhir. Untuk meneruskan data audio ini, digunakanlah nodejs. Nodejs akan mengubah data pengirim yang awalnya dengan username dan password yang ditentukan sendiri oleh pengirim, menjadi username dan password yang diijinkan oleh tiga node akhir.
+	
+	Mekanisme pengubahan username dan password pengirim menjadi username dan password yang sah ada di kode sumber di bawah ini :
+	
+
+	\begin{lstlisting}[breaklines,frame=single]
+var net = require('net');
+var async = require('async');
+var mongoose = require('mongoose');
+
+var userModel = require('../models/userModel');
+var peerModel = require('../models/peerModel');
+var streamModel = require('../models/streamModel');
+
+mongoose.connect('mongodb://localhost/mbahmu');
+
+
+var connectIcecast = function(mountPoint, method, headers, callback) {
+var clients = [];
+peerModel.Peer.find({}, function(err, peers) {
+async.eachSeries(peers, function(peer, callback) {
+if(peer.online == true) {
+console.log("Connecting to: " + peer.ip)
+var client = net.connect({host: peer.ip, port: 8000}, function() {
+var stdout = "";
+// Connect, give me some header
+client.write(method + " " + mountPoint + " HTTP/1.0\r\n");
+console.log(method, mountPoint)
+for(idx in headers) {
+if(idx == "Authorization") {
+client.write('Authorization: Basic c291cmNlOmhhY2ttZQ==\r\n')
+} else {
+client.write(idx + ': ' +  headers[idx] + '\r\n');
+}
+}
+
+client.write('\r\n');
+client.on('data', function(data) {
+console.log(data.toString())
+stdout += data.toString();
+if(stdout.indexOf("HTTP/1.0 200 OK\r\n") >= 0) {
+console.log('Connected to: ' + peer.ip);
+clients.push(client);
+callback();
+}
+});
+
+});
+
+
+} else {
+callback();
+}
+
+}, function(err) {
+callback(clients);
+});
+
+})
+
+};
+
+net.createServer(function(stream) {
+
+var headerRaw = "";
+var headerMode = true;
+var peerStreams = null;
+
+stream.on('data', function(data) {
+// Header Mode
+// Get header and check when it is completed.
+if(headerMode) {
+try {
+headerRaw += data.toString();
+
+// Completed yet?
+if(headerRaw.indexOf("\r\n\r\n") >= 0) {
+// Separate first line and the rest
+var headerSplit = headerRaw.split("\r\n");
+var mountPoint = headerSplit[0].split(" ")[1];
+var method = headerSplit[0].split(" ")[0];
+var headers = {};
+
+console.log(method, mountPoint);
+for(var i=1; i<headerSplit.length; i++) {
+var name = headerSplit[i].split(": ")[0];
+var value = headerSplit[i].split(": ")[1];
+if(name && value) {
+headers[name] = value;
+}
+}
+
+console.log(headers);
+
+
+// Check authentication part
+var authString = new Buffer(headers['Authorization'].split(" ")[1], 'base64');
+
+var userName = authString.toString('ascii').split(":")[0];
+var password = authString.toString('ascii').split(":")[1];
+
+
+
+
+// Authenticate with Model
+userModel.authenticateUser(userName, password, function(err, result, userId) {
+if(result == true) {
+// Check if this user is appropriate for this moutnPoint
+// Stream Mode
+if(mountPoint.indexOf("/admin/") < 0) {
+streamModel.streamMountUser(mountPoint, userId, function(err, result) {
+if(result == true) {
+// Roger that
+headerMode = false;
+
+// But first, connect to the real stream server
+connectIcecast(mountPoint, method, headers, function(result) {
+console.log('Connected to all, ready to serve...')
+peerStreams = result;
+
+// Ready to serve a media
+stream.write('HTTP/1.0 200 OK\r\n\r\n')
+});
+
+} else {
+stream.end('HTTP/1.0 500 ERROR\r\n\r\n')
+}
+});
+
+// Admin mode
+} else {
+}
+} else {
+stream.end('HTTP/1.0 500 ERROR\r\n\r\n')
+}
+})
+}
+} catch(ex) {
+stream.end('HTTP/1.0 500 ERROR\r\n\r\n')
+
+}
+} else {
+// Piping the media to all peer
+try {
+if(peerStreams) {
+for(idx in peerStreams) {
+peerStreams[idx].write(data);
+}
+}
+
+} catch(ex) {
+stream.end();
+}
+}
+});
+
+stream.on('end', function() {
+if(peerStreams) {
+for(idx in peerStreams) {
+peerStreams[idx].end();
+}
+}
+})
+}).listen(9000);
+		
+	\end{lstlisting}
+	
+	\section{Implementasi Fitur Penyeimbang Muat}
+	HAProxy sangat berperan dalam fitur penyeimbang muat. HAProxy akan menyediakan satu alamat server yang bisa diakses oleh pendengar dan meneruskannya ke tiga node akhir. 
+	
+	Sebelumnya disediakan tiga node akhir pada alamat 10.151.36.201, 10.151.36.202, dan 10.151.36.203. Ketiga node akhir ini sudah memiliki Icecast server yang berjalan dengan konfigurasi yang sama. Hanya ada satu perbedaan dari ketiga node akhir, yaitu pada konfigurasi \textit{hostname}. Node akhir ini berjalan diatas virtualisasi di dalam Proxmox.
+	
+	\begin{lstlisting}[breaklines,frame=single]
+global
+	log /dev/log	local0
+	log /dev/log	local1 notice
+	chroot /var/lib/haproxy
+	stats socket /run/haproxy/admin.sock mode 660 level admin
+	stats timeout 30s
+	maxconn 100000
+	maxconnrate 100000
+	user haproxy
+	group haproxy
+	daemon
+	
+	# Default SSL material locations
+	ca-base /etc/ssl/certs
+	crt-base /etc/ssl/private
+	
+	# Default ciphers to use on SSL-enabled listening sockets.
+	# For more information, see ciphers(1SSL).
+	ssl-default-bind-ciphers kEECDH+aRSA+AES:kRSA+AES:+AES256:RC4-SHA:!kEDH:!LOW:!EXP:!MD5:!aNULL:!eNULL
+	ssl-default-bind-options no-sslv3
+
+defaults
+	log	global
+	mode	http
+	option	httplog
+	option	dontlognull
+	timeout connect 5000
+	timeout client  50000
+	timeout server  50000
+	errorfile 400 /etc/haproxy/errors/400.http
+	errorfile 403 /etc/haproxy/errors/403.http
+	errorfile 408 /etc/haproxy/errors/408.http
+	errorfile 500 /etc/haproxy/errors/500.http
+	errorfile 502 /etc/haproxy/errors/502.http
+	errorfile 503 /etc/haproxy/errors/503.http
+	errorfile 504 /etc/haproxy/errors/504.http
+	
+frontend localnodes
+	bind *:8000
+	mode http
+	default_backend nodes
+	
+backend nodes
+	mode http
+	balance leastconn
+	option forwardfor
+	option httpchk GET /
+	server ice1 10.151.36.201:8000 check maxconn 100000
+	server ice2 10.151.36.202:8000 check maxconn 100000
+	server ice3 10.151.36.203:8000 check maxconn 100000
+	
+listen stats *:1936
+	stats enable
+	stats uri /
+	stats hide-version
+	stats auth user:user
+	
+	\end{lstlisting}
+	
+	Konfigurasi HAProxy di atas berjalan di server dengan alamat 10.151.36.205. Fitur penyeimbang muat ini bekerja pada port 8000 dan akan meneruskan permintaan yang masuk ke tiga node akhir yang sudah dituliskan di dalam konfigurasi. Selain kinerja penyeimbang muat ini dapat dipantau pada alamat 10.151.36.205:1936, perhatikan kode sumber di atas yang menyebutkan statistik penggunaan penyeimbang muat diaktifkan pada port 1936.
+	
+
+	\chapter{Uji Coba}
+	
+	\section{Skenario Uji Coba}
+	Uji coba dalam penelitian ini dilakukan dengan penghitungan dan pembandingan performa antara server Icecast menggunakan load balancer dengan satu, dua dan tiga Node akhir secara beriringan. Perhitungan dilakukan dengan melakukan uji \texttt{stress test} pada load balancer melalui akses server (melalui load balancer) secara bersamaan sampai pada titik dimana pengakses diputus oleh server karena terlalu padat.
+	
+	Uji coba ini menggunakan virtualisasi pada komputer yang telah terinstall Proxmox. Untuk setiap virtual komputer yang dibuat memiliki spesifikasi sebagai berikut :
+
+	
+	\begin{itemize}
+		\item CPU \tabto{2cm} : 1 core kvm64
+		\item Memori \tabto{2cm} : 512 MB
+		\item Network \tabto{2cm} : Bridge Mode dengan Intel E1000
+	\end{itemize}
+	
+	Sedangkan komputer yang menjalankan virtualisasi ini memiliki spesifikasi sebagai berikut :
+	
+	\begin{itemize}
+		\item Processor \tabto{2cm} : 4 core Intel(R) Xeon(R) CPU E3-1220 V2 @ 3.10GHz
+		\item Memori \tabto{2cm} : 7.51 GB
+		\item Swap \tabto{2cm} : 7.00 GB
+	\end{itemize}
+	
+	Karena komputer untuk virtualisasi berada di Laboratorium Arsitektur dan Jaringan Komputer Teknik Informatika ITS, sehingga konfigurasi menggunakan IP dengan network 10.151.36.0/24. Node akhir berjumlah tiga virtualisasi dan masing-masing diberi alamat 10.151.36.201, 10.151.36.202, dan 10.151.36.203. Sementara itu untuk server \textit{load balancer} berada pada alamat 10.151.36.205
+	
+	\section{Hasil Uji Coba}
+	
+	\section{Analisa}
+	
+	
+
+	\chapter{KESIMPULAN DAN SARAN}
+	
+	\backmatter
+
+	\chapter{DAFTAR PUSTAKA}
+	
+	
+\end{document}
