@@ -26,13 +26,54 @@ Sedangkan komputer yang menjalankan virtualisasi ini memiliki spesifikasi sebaga
 
 
 \section{Skenario Pengujian}
-Uji coba dalam penelitian ini dilakukan dengan penghitungan dan pembandingan performa antara server Icecast menggunakan load balancer dengan satu, dua dan tiga Node akhir secara beriringan. Perhitungan dilakukan dengan melakukan uji \texttt{stress test} pada load balancer melalui akses server (melalui load balancer) secara bersamaan sampai pada titik dimana pengakses diputus oleh server karena terlalu padat. 
+Uji coba dalam penelitian ini dilakukan dengan penghitungan dan pembandingan performa akses antara server Icecast menggunakan \textit{load balancer} dengan tiga Node dan server Icecast tanpa menggunakan \textit{load balancer}. Perhitungan dilakukan dengan melakukan uji \texttt{stress test}  pada load balancer melalui akses server (melalui load balancer) atau secara langsung (tanpa melalui load balancer) sampai pada titik dimana pengakses diputus oleh server karena terlalu padat. 
 
-Akses dilakukan melalui tiga komputer penguji beban dengan jumlah klien yang disimulasikan untuk semua penguji dibuat berurutan mulai dari 100 hingga 600 klien (setiap 100 klien) dengan waktu akses dibatasi pada 60 detik. Contoh audio dialirkan melalui aplikasi Mixxx dari sisi penyiar dengan codec berbasis MP3 dan bitrate 320 kbps.
+Akses dilakukan melalui tiga komputer penguji beban dengan jumlah klien yang disimulasikan untuk semua penguji yaitu berjumlah 90,150,300,450 dan 600 dengan waktu akses dibatasi pada 30 detik. Contoh audio dialirkan melalui aplikasi Mixxx dari sisi penyiar dengan codec berbasis MP3 dan bitrate 320 kbps.
 
 
 \section{Hasil Uji Coba}
 
-\section{Analisa}
+Hasil ujicoba direpresentasikan oleh Tabel \ref{tab:haproxy} dan Tabel \ref{tab:nohaproxy}.
+% Diakses langsung
+\begin{table}[h]
+	\centering
+	\caption{Akses tanpa HAProxy}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Pengakses} & \textbf{Terpenuhi} & \textbf{Gagal} \\ \hline
+		90 & 90 & 0 \\ \hline
+		150 & 150 & 0 \\ \hline
+		300 & 300 & 0 \\ \hline
+		450 & 346 & 104 \\ \hline
+		600 & 243 & 357 \\ \hline
+	\end{tabular}
+	
+	\label{tab:nohaproxy}
+\end{table}
 
+
+% Diakses melalui HAProxy
+\begin{table}[h]
+	\centering
+	\caption{Akses Melalui HAProxy}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Pengakses} & \textbf{Terpenuhi} & \textbf{Gagal} \\ \hline
+		90 & 90 & 0 \\ \hline
+		150 & 150 & 0 \\ \hline
+		300 & 300 & 0 \\ \hline
+		450 & 434 & 16 \\ \hline
+		600 & 485 & 115 \\ \hline
+	\end{tabular}
+	
+	\label{tab:haproxy}
+\end{table}
+
+
+\section{Analisa}
+	Dari hasil ujicoba yang sudah dilakukan, didapatkan bahwasanya pada saat klien yang mengakses berjumlah 90, 150, dan 300 tingkat keberhasilan akses mencapai 100\% dan tingkat kegagalan akses adalah 0\%. Namun tingkat keberhasilan permintaan ini berubah ketika jumlah klien yang mengakses mencapai angka 450.
+	
+	Pada ujicoba dengan jumlah 450 pengakses, didapatkan tingkat keberhasilan dan kegagalan yang berbeda antara akses tanpa load balancer dan akses melalui load balancer. Akses tanpa load balancer memberikan tingkat keberhasilan 76,8\% dan tingkat kegagalan 23.2\% dengan 450 pengakses. Bandingkan dengan akses melalui HAProxy yang memberikan tingkat keberhasilan 96,4\% dan tingkat kegagalan 3,6\% dengan jumlah pengakses yang sama.
+	
+	Pengujian dengan 600 pengakses juga memberikan tingkatan yang berbeda. Tingkat keberhasilan akses tanpa load balancer sebesar 40,5\% dan tingkat kegagalannya sebesar 59,5\%. Sementara itu tingkat keberhasilan akses melalui load balancer sebesar 80,8\% dan tingkat kegagalannya sebesar 19,2\%.
 

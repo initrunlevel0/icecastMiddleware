@@ -1,4 +1,5 @@
 \documentclass[conference]{IEEEtran}
+\renewcommand\IEEEkeywordsname{Kata kunci}
 
 
 \let\chapter\section
@@ -24,7 +25,11 @@
 	
 \maketitle
 \begin{abstract}
-    We propose ...
+    Radio Internet adalah salah satu aplikasi Internet yang semakin banyak digunakan. Berbeda dengan radio konvensional yang mengirimkan suara dalam bentuk gelombang radio analog, radio Internet dikirimkan secara digital ke setiap penerima satu per satu menggunakan jaringan Internet berbasis TCP/IP. Dengan kata lain, semakin banyak suatu radio Internet maka semakin padat juga penggunaan jaringan dan beban server yang menyokongknya.
+    
+    Dalam penelitian ini, dilakukan proses implementasi server radio Internet menggunakan teknik pembagi muat (\textbf{load balancer}) berbasis HAProxy. Perangkat lunak server radio Internet yang digunakan adalah IceCast yang berlisensi terbuka.
+    
+    Pada akhirnya didapatkan bahwa dengan bantuan HAProxy sebagai load balancer dan Icecast sebagai penerima aliran data audio dari pengirim, masih dibutuhkan satu mekanisme jalur tengah yang membantu aliran data audio dari satu sumber pengirim tersebar ke banyak server.
 \end{abstract}
 \begin{IEEEkeywords}
     \textit{Streaming}, HAProxy, Icecast, Penyeimbang Muat, Internet Radio.
@@ -38,5 +43,6 @@
 \input{implementasi}
 \input{pengujian}
 \input{penutup}
+\input{daftar_pustaka}
 	
 \end{document}

@@ -1,5 +1,16 @@
 \chapter{Kesimpulan dan Saran}
 
 \section{Simpulan}
+Berikut ini simpulan yang didapatkan setelah melakukan ujicoba dan analisa terhadap penelitian ini :
+
+\begin{enumerate}
+	\item Untuk menyeimbangkan muatan kerja server yang menyiarkan audio ke pendengar, digunakan sebuah server load balancer dengan menggunakan HAProxy yang menyediakan akses yang sama dengan kerja server yang ada di belakang load balancer tersebut. Kerja load balancer hanya akan meneruskan setiap permintaan dan balasan dari dan ke server penyiar audio. HAProxy akan memilih server mana yang akan menerima permintaan dari pendengar sesuai dengan algoritma pemilihan yang sudah diimplementasikan sebelumnya.
+	
+	\item Dalam menyediakan banyak server untuk melayani permintaan pendengar dengan satu sumber aliran dari pengirim dibutuhkan satu mekanisme jalur tengah dengan bantuan nodejs. Nodejs ini akan meneruskan satu sumber aliran dari pengirim ke banyak server yang disediakan. 
+	
+\end{enumerate}
+
 
 \section{Saran}
+
+
