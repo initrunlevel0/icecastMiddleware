@@ -1,0 +1,40 @@
+\documentclass[a0,portrait]{a0poster}
+\usepackage{multicol}
+\columnsep=100pt
+\columnseprule=3pt
+\let\chapter\section
+\let\section\subsection
+\let\subsection\subsubsection
+\let\subsubsection\paragraph
+
+\usepackage[svgnames]{xcolor}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage[font=large,labelfont=bf]{caption}
+\usepackage{url}
+
+\begin{document}
+% Logo Its
+\begin{minipage}[b]{0.25\linewidth}
+\includegraphics[width=\linewidth]{logo-its}
+\end{minipage}
+\begin{minipage}[b]{0.75\linewidth}
+
+% Judul
+\veryHuge \color{NavyBlue} \textbf{Metode Pengaliran Data Audio melalui Sistem Penyeimbang Muat berbasis HAProxy} \\
+\huge \color{black} \textbf{Putu Wiramaswara Widya \& Bahrul Halimi} \\
+\Huge Jurusan Teknik Informatika \\
+Institut Teknologi Sepuluh Nopember
+
+
+\end{minipage}
+\hline
+\begin{multicols}{2}
+\LARGE
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Pendahuluan]
+Radio Internet adalah salah satu aplikasi Internet yang semakin banyak digunakan. Berbeda dengan radio konvensional yang mengirimkan suara dalam bentuk gelombang radio analog, radio Internet dikirimkan secara digital ke setiap penerima satu per satu menggunakan jaringan Internet berbasis TCP/IP. Dengan kata lain, semakin banyak suatu radio Internet maka semakin padat juga penggunaan jaringan dan beban server yang menyokongknya.
+
+Dalam penelitian ini, dilakukan proses implementasi server radio Internet menggunakan teknik pembagi muat (\textbf{load balancer}) berbasis HAProxy. Perangkat lunak server radio Internet yang digunakan adalah IceCast yang berlisensi terbuka.
+\end{tcolorbox}
+\end{multicols}
+\end{document}
