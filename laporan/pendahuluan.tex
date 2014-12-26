@@ -1,0 +1,32 @@
+\chapter{Pendahuluan}
+
+\section{Latar Belakang}
+
+Informasi menyebar dari lokasi ke lokasi lain dengan berbagai macam bentuk media, mulai dari media udara melalui percakapan sehari-hari secara langsung hingga media Internet yang bisa dijangkau oleh dua pihak yang berjauhan. Akhir-akhir ini, media Internet menjadi salah satu sarana yang mulai banyak dan lumrah digunakan untuk proses penyebaran dan penerimaan informasi.
+
+Salah satu aplikasi penyebaran informasi melalui Internet adalah melalui radio Internet yang dialirkan melalui aliran atau \textit{streaming} berkas suara melalui jaringan Internet berbasis TCP/IP. Proses pengaliran data multimedia sendiri sudah lama dikenal masyarakat Indonesia. Semakin murahnya dan banyaknya penggunaan Internet di seluruh dunia memunculkan banyaknya penyedia layanan radio Internet baik pengguna secara individu maupun perusahaan penyiaran yang sudah besar. Banyak radio lokal yang pada awalnya bersiaran secara analog melalui frekuensi radio FM/AM pada akhirnya membuka peluang dirinya agar bisa bersiaran melalui jaringan Internet sehingga radio mereka dapat diakses secara luas tanpa adanya batasan geografis. 
+
+Berbeda dengan radio analog, proses penyiaran radio Internet dilakukan dalam mekanisme yang tidak sederhana. Suara atau audio siaran tidak disalurkan melalui gelombang radio dalam bentuk analog suara, melainkan dalam bentuk data audio digital dalam berbagai format yang umumnya sudah terkompresi. Data ini kemudian disebarkan melalui jaringan Internet ke pengguna dengan rasio 1:1, yang berarti satu data audio dikirimkan ke setiap satu pendengar yang mengaksesnya. Hal ini menyebabkan radio Internet rentan terhadap masalah ketersediaan (\textit{avialibility}) yang terjadi ketika server penyedia tidak mampu melayani semakin banyaknya pendengar.
+
+Pada kesempatan ini, dilakukan penelitian mengenai penggunaan sistem penyeimbang muat pada server radio Internet untuk memaksimalkan ketersediaan server pada beban puncak. Sistem pembagi muat akan membantu mengatur muatan permintaan data suara dari pengakses radio Internet ke banyak komputer server yang menyediakan isi konten siaran yang sama. Untuk perangkat lunak implementasi, penelitian ini menggunakan server berbasis Icecast (\url{http://icecast.org}) yang memiliki lisensi terbuka dan protokol yang kompatibel dengan HTTP dengan sistem pembagi muat berbasis HAProxy (\url{http://haproxy.org}).
+
+\section{Permasalahan}
+Berikut beberapa hal yang menjadi rumusan masalah dalam pengerjaan penelitian ini :
+\begin{enumerate}
+    \item Bagaimana menyeimbangkan muatan kerja server yang menyiarkan audio ke pendengar ketika ada banyak permintaan secara bersamaan?
+    \item Bagaimana menyediakan banyak server untuk melayani permintaan pendengar dengan satu sumber aliran dari pengirim?
+
+\end{enumerate}
+
+\section{Batasan Masalah}
+Dari permasalahan yang diuraikan di atas, terdapat beberapa batasan masalah pada penelitian ini, yaitu :
+\begin{enumerate}
+    \item Aliran data multimedia yang didukung hanya audio.
+\end{enumerate}
+
+\section{Tujuan dan Manfaat}
+Penelitian ini dibuat dengan beberapa tujuan sebagai berikut :
+\begin{enumerate}
+\item Mencari tahu manfaat penggunaan sistem penyeimbangan muat pada sistem pengaliran data multimedia berbasis audio.
+\end{enumerate}
+
