@@ -1,0 +1,38 @@
+\chapter{Pengujian}
+
+\section{Lingkungan Pengujian}
+Terdapat beberapa komputer yang digunakan pada proses pengujian :
+\begin{itemize}
+\item Tiga Node akhir pada alamat IP \texttt{10.151.36.201}, \texttt{10.151.36.202}, \texttt{10.151.36.203}. Kesemua Node terpasang perangkat lunak Icecast.
+\item Sebuah Load balancer dengan HAProxy pada IP \texttt{10.151.36.205}.
+\item Komputer penguji beban pada IP \texttt{10.151.36.27}, \texttt{10.151.36.34} dan \texttt{10.151.36.39}.
+\end{itemize}
+
+Pengujian pada Node akhir dan Load Balancer menggunakan virtualisasi pada komputer yang telah terinstall Proxmox. Untuk setiap virtual komputer yang dibuat memiliki spesifikasi sebagai berikut :
+
+\begin{itemize}
+    \item CPU \tabto{2cm} : 1 core kvm64
+    \item Memori \tabto{2cm} : 512 MB
+    \item Network \tabto{2cm} : Bridge Mode dengan Intel E1000
+\end{itemize}
+
+Sedangkan komputer yang menjalankan virtualisasi ini memiliki spesifikasi sebagai berikut :
+
+\begin{itemize}
+    \item Processor \tabto{2cm} : 4 core Intel(R) Xeon(R) CPU E3-1220 V2 @ 3.10GHz
+    \item Memori \tabto{2cm} : 7.51 GB
+    \item Swap \tabto{2cm} : 7.00 GB
+\end{itemize}
+
+
+\section{Skenario Pengujian}
+Uji coba dalam penelitian ini dilakukan dengan penghitungan dan pembandingan performa antara server Icecast menggunakan load balancer dengan satu, dua dan tiga Node akhir secara beriringan. Perhitungan dilakukan dengan melakukan uji \texttt{stress test} pada load balancer melalui akses server (melalui load balancer) secara bersamaan sampai pada titik dimana pengakses diputus oleh server karena terlalu padat. 
+
+Akses dilakukan melalui tiga komputer penguji beban dengan jumlah klien yang disimulasikan untuk semua penguji dibuat berurutan mulai dari 100 hingga 600 klien (setiap 100 klien) dengan waktu akses dibatasi pada 60 detik. Contoh audio dialirkan melalui aplikasi Mixxx dari sisi penyiar dengan codec berbasis MP3 dan bitrate 320 kbps.
+
+
+\section{Hasil Uji Coba}
+
+\section{Analisa}
+
+
