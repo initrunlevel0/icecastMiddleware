@@ -1,19 +1,31 @@
 <div ng-controller="streamController">
 <table border="1">
     <tr>
-        <td><b>Stream</b></td>
+        <td><b>Mount Point</b></td>
+        <td><b>Stream Name</b></td>
+        <td><b>Category Name</b></td>
+        <td><b>Region</b></td>
         <td><b>Option</b></td>
     </tr>
     <tr ng-repeat="stream in streams">
         <td>{{stream.mountPoint}}</td>
+        <td>{{stream.streamName}}</td>
+        <td>{{stream.categoryName}}</td>
+        <td>{{stream.region}}</td>
         <td>Nope</td>
     </tr>
 </table>
 <br/>
 <strong>Add New /stream</strong>
 <form>
-    <label>Stream</label>
+    <label>Mount Point</label>
     <input ng-model="newStream.mountPoint" /> <br/>
+    <label>Stream Name</label>
+    <input ng-model="newStream.streamName" /> <br/>
+    <label>Category</label>
+    <input ng-model="newStream.categoryName" /> <br/>
+    <label>Region</label>
+    <input ng-model="newStream.region" /> <br/>
     <button ng-click="createStream()">Kriyet</button>
 </form>
 <p>Ingat, nama stream harus diawali / (slash), not these one :</p>

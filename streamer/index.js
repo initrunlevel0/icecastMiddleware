@@ -14,12 +14,13 @@ var connectIcecast = function(mountPoint, method, headers, callback) {
     peerModel.Peer.find({}, function(err, peers) {
         async.eachSeries(peers, function(peer, callback) {
             if(peer.online == true) {
-                console.log("Connecting to: " + peer.ip)
+                console.log("Connecting to: " + peer.ip);
                 var client = net.connect({host: peer.ip, port: 8000}, function() {
                     var stdout = "";
                     // Connect, give me some header
                     client.write(method + " " + mountPoint + " HTTP/1.0\r\n");
-                    console.log(method, mountPoint)
+
+                    console.log(method, mountPoint);
                     for(idx in headers) {
                         if(idx == "Authorization") {
                             client.write('Authorization: Basic c291cmNlOmhhY2ttZQ==\r\n')
