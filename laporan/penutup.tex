@@ -1,7 +1,7 @@
 \chapter{Kesimpulan dan Saran}
 
 \section{Simpulan}
-Berikut ini simpulan yang didapatkan setelah melakukan ujicoba dan analisa terhadap penelitian ini :
+Berikut ini simpulan yang didapatkan setelah melakukan uji coba dan analisa terhadap penelitian ini :
 
 \begin{enumerate}
 	\item Untuk menyeimbangkan muatan kerja server yang menyiarkan audio ke pendengar, digunakan sebuah server load balancer dengan menggunakan HAProxy yang menyediakan akses yang sama dengan kerja server yang ada di belakang load balancer tersebut. Kerja load balancer hanya akan meneruskan setiap permintaan dan balasan dari dan ke server penyiar audio. HAProxy akan memilih server mana yang akan menerima permintaan dari pendengar sesuai dengan algoritma pemilihan yang sudah diimplementasikan sebelumnya.
@@ -12,5 +12,12 @@ Berikut ini simpulan yang didapatkan setelah melakukan ujicoba dan analisa terha
 
 
 \section{Saran}
+
+Dalam penelitian didapatkan tingkat keberhasilan di atas 80\% dengan 600 permintaan akses, padahal hanya digunakan 3 Node akhir dengan masing-masing Node berada di dalam virtualisasi saja. Virtualisasi server sendiri sebenarnya tidak dapat memberikan hasil yang maksimal seperti penggunaan komputer fisik. Ada beberapa kesempatan pengembangan terhadap penelitian ini diantaranya :
+
+\begin{enumerate}
+	\item Penggunaan Node akhir yang lebih banyak dibandingkan penelitian ini.
+	\item Penggunaan komputer fisik, bukan menggunakan komputer virtual.
+\end{enumerate}
 
 

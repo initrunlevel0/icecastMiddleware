@@ -33,7 +33,7 @@ Akses dilakukan melalui tiga komputer penguji beban dengan jumlah klien yang dis
 
 \section{Hasil Uji Coba}
 
-Hasil ujicoba direpresentasikan oleh Tabel \ref{tab:haproxy} dan Tabel \ref{tab:nohaproxy}.
+Hasil ujicoba direpresentasikan oleh Tabel \ref{tab:nohaproxy} dan Tabel \ref{tab:haproxy}.
 % Diakses langsung
 \begin{table}[h]
 	\centering
@@ -76,4 +76,6 @@ Hasil ujicoba direpresentasikan oleh Tabel \ref{tab:haproxy} dan Tabel \ref{tab:
 	Pada ujicoba dengan jumlah 450 pengakses, didapatkan tingkat keberhasilan dan kegagalan yang berbeda antara akses tanpa load balancer dan akses melalui load balancer. Akses tanpa load balancer memberikan tingkat keberhasilan 76,8\% dan tingkat kegagalan 23.2\% dengan 450 pengakses. Bandingkan dengan akses melalui HAProxy yang memberikan tingkat keberhasilan 96,4\% dan tingkat kegagalan 3,6\% dengan jumlah pengakses yang sama.
 	
 	Pengujian dengan 600 pengakses juga memberikan tingkatan yang berbeda. Tingkat keberhasilan akses tanpa load balancer sebesar 40,5\% dan tingkat kegagalannya sebesar 59,5\%. Sementara itu tingkat keberhasilan akses melalui load balancer sebesar 80,8\% dan tingkat kegagalannya sebesar 19,2\%.
+	
+	Hasil ini didapatkan dari penggunaan 3 server virtual sebagai Node akhir. Jika ditambahkan jumlah Node akhir yang bekerja, bisa jadi tingkat keberhasilannya akan berubah dengan jumlah pengakses yang sama dengan pengujian di atas. Belum diketahui juga hasil ketika server yang digunakan adalah komputer fisik dengan \textit{processor} dengan inti lebih banyak dan kecepetan lebih baik.
 

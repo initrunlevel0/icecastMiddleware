@@ -8,7 +8,7 @@ Pada bagian Frontend, pendengar akan berhadapan dengan server penyeimbang muat b
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{arsitektur}
+    \includegraphics[width=1\linewidth]{arsitektur}
     \caption{Arsitektur Jaringan}
     \label{fig:arsitektur}
 \end{figure}
@@ -24,9 +24,9 @@ Pada Gambar \ref{fig:kirim-server} diagram alir menjelaskan bagaimana pengirim m
 
 Gambar \ref{fig:kirim-server} menjelaskan apa yang terjadi di bagian backend aplikasi.
 
-\begin{figure}
+\begin{figure}[h]
     \centering
-    \includegraphics[width=0.7\linewidth]{kirim-server}
+    \includegraphics[width=1\linewidth]{kirim-server}
     \caption{Alur Kerja Pengirim dan Server}
     \label{fig:kirim-server}
 \end{figure}
@@ -35,9 +35,9 @@ Gambar \ref{fig:kirim-server} menjelaskan apa yang terjadi di bagian backend apl
 \subsection{Penyeimbang Muat}
 Penyeimbang muat diakses ketika ada pendengar atau pengakses yang ingin mengakses siaran yang tersedia pada Server. Pada kenyataannya pendengar hanya akan mengakses satu alamat server yang akan memintakan layanan ke Node akhir. Server yang diakses oleh pendengar tidak memiliki layanan yang diminta oleh pendengar, server hanya bertindak sebagai penerus dan penyeimbang muat bagi permintaan yang banyak.
 
-\begin{figure}
+\begin{figure}[h]
     \centering
-    \includegraphics[width=0.7\linewidth]{dengar-server}
+    \includegraphics[width=1\linewidth]{dengar-server}
     \caption{Alur Kerja Pendengar dan Server}
     \label{fig:dengar-server}
 \end{figure}
