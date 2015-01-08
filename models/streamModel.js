@@ -3,6 +3,9 @@ var bcrypt = require('bcrypt');
 
 var streamSchema = new mongoose.Schema({
     mountPoint: String,
+    streamName: String,
+    categoryName: String,
+    region: String,
     user: mongoose.Schema.Types.ObjectId
 });
 

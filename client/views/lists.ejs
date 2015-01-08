@@ -1,0 +1,6 @@
+<h1>Daftar Stream</h1>
+<ul>
+    <% streams.forEach(function(stream) { %>
+    <li><a href="/stream/<%=stream._id%>"><%=stream.streamName %> (<%=stream.categoryName%>)</a></li>
+    <% });%>
+</ul>

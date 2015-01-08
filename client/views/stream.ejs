@@ -1,0 +1,22 @@
+<h1>Mendengarkan</h1>
+<table>
+    <tr>
+        <td><strong>Nama Radio</strong></td>
+        <td><%=stream.streamName%></td>
+    </tr>
+    <tr>
+        <td><strong>Kategori</strong></td>
+        <td><%=stream.categoryName%></td>
+    </tr>
+    <tr>
+        <td><strong>Lokasi</strong></td>
+        <td><%=stream.region%></td>
+    </tr>
+</table>
+<h2><%=stream.streamName%></h2>
+<audio controls>
+<source src="http://10.151.36.205:8003<%=stream.mountPoint%>" type="audio/ogg" />
+<em>Sorry, your browser doesn't support HTML5 audio.</em>
+</audio><br/>
+
+<a href="/"><-- Kembali</a>
